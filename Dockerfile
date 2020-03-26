@@ -20,6 +20,7 @@ WORKDIR $HOME
 USER developer
 
 RUN git clone https://github.com/open-ideas/IDEAS.git $HOME/IDEAS
+RUN git clone https://github.com/icupeiro/model-GEOTABS.git
 RUN pip install --user --no-cache-dir notebook==5.*
 RUN pip install --user pandas
 RUN pip install --user flask
