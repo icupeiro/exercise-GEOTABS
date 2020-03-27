@@ -45,7 +45,7 @@ def resistanceCalculator(time, gFunc, kSoi):
 
     return Rh,Rm,Ra
 
-def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18):
+def computeResistances(qh,qm,qa,kSoi, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18):
     # -------------------------------------------------------------------------
     # Simulation parameters
     # -------------------------------------------------------------------------
