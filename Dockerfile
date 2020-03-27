@@ -25,12 +25,12 @@ RUN pip install --user pandas
 RUN pip install --user scipy
 RUN pip install --user numpy
 RUN pip install --user matplotlib
-RUN pip install --user flask
 RUN pip install --user ipykernel==4.7.0
 RUN pip install --user pygfunction
 
 COPY Introduction.ipynb $HOME
 COPY PartI_TABS.ipynb $HOME
+COPY PartII_StaticCalc.ipynb $HOME
 COPY PartIII_EnergySystemDesign.ipynb $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
