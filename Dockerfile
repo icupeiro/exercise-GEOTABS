@@ -30,6 +30,7 @@ RUN pip install --user ipykernel==4.7.0
 RUN pip install --user pygfunction
 
 COPY Introduction.ipynb $HOME
+COPY PartI_TABS.ipynb $HOME
 COPY PartIII_EnergySystemDesign.ipynb $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
