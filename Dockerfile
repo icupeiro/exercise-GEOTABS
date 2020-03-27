@@ -29,7 +29,6 @@ RUN pip install --user flask
 RUN pip install --user ipykernel==4.7.0
 RUN pip install --user pygfunction
 
-
 COPY JModelica_test.ipynb $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME

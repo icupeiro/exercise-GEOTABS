@@ -45,7 +45,7 @@ def resistanceCalculator(time, gFunc, kSoi):
 
     return Rh,Rm,Ra
 
-def computeResistances(qh,qm,qa,kSoi, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18):
+def computeResistances(qh,qm,qa,kSoi, aSoi='sentinel' ,Rb=0.144,Tg=10,Tf=18):
     # -------------------------------------------------------------------------
     # Simulation parameters
     # -------------------------------------------------------------------------
@@ -75,7 +75,7 @@ def computeResistances(qh,qm,qa,kSoi, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18):
     #Tg = 10                 # Undisturbed ground temperature (degC)
 
     # Temperature constraint
-    #Tc = 18                 # Check whether it is for cooling or heating! (degC)
+    #Tf = 18                 # Check whether it is for cooling or heating! (degC)
 
     # Number of segments per borehole
     nSegments = 1
@@ -96,7 +96,7 @@ def computeResistances(qh,qm,qa,kSoi, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18):
     print("Thermal conductivity of the ground kSoi = ", kSoi,"W/(mK)")
     print("Thermal diffusivity of the ground aSoi = ", aSoi, "m2/s")
     print("Undisturbed ground temperature Tg = ", Tg, "degC")
-    print("Fluid temperature constraint Tc = ", Tc, "degC")
+    print("Fluid temperature constraint Tf = ", Tf, "degC")
     print("Borehole effective resistance Rb =", Rb,"(mK)/W")
     print("Volumetric thermal capacity of the ground CSoi =", CSoi, "J/(m3.K)")
 
@@ -118,7 +118,7 @@ def computeResistances(qh,qm,qa,kSoi, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18):
     #Initial guess using a g-function of H=100 borehole
     Rh, Rm, Ra = resistanceCalculator(time,gFunc,kSoi)
 
-    L = (qh*(Rb+Rh)+qm*Rm+qa*Ra)/(Tc-Tg)
+    L = (qh*(Rb+Rh)+qm*Rm+qa*Ra)/(Tf-Tg)
 
     print("Required length for a borehole with no interferences: ", L,"m")
 
@@ -154,7 +154,7 @@ def computeResistances(qh,qm,qa,kSoi, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18):
         print("Computed yearly resistance: ", Ra, "(mK)/W")
 
         L_old = L 
-        L = (qh*(Rb+Rh)+qm*Rm+qa*Ra)/(Tc-Tg)
+        L = (qh*(Rb+Rh)+qm*Rm+qa*Ra)/(Tf-Tg)
         H = L/N_b
 
         #print("New field length: ", L, "m")
