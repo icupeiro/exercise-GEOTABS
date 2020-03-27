@@ -34,5 +34,6 @@ COPY PartII_StaticCalc.ipynb $HOME
 COPY PartIII_EnergySystemDesign.ipynb $HOME
 COPY PartIV_DynamicSim.ipynb $HOME
 COPY PartV_hybridGEOTABS.ipynb $HOME
+COPY loadCalc.xlsx $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
