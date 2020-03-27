@@ -45,7 +45,7 @@ def resistanceCalculator(time, gFunc, kSoi):
 
     return Rh,Rm,Ra
 
-def computeResistances(qh,qm,qa,kSoi,cSoi=1200,dSoi=1800,CSoi=cSoi*dSoi,aSoi=kSoi/CSoi,Rb=0.144,Tg=10,Tc=18)
+def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18):
     # -------------------------------------------------------------------------
     # Simulation parameters
     # -------------------------------------------------------------------------
@@ -64,10 +64,13 @@ def computeResistances(qh,qm,qa,kSoi,cSoi=1200,dSoi=1800,CSoi=cSoi*dSoi,aSoi=kSo
     #Rb = 0.144          # Borehole effective thermal resistance ((mK)/W)
 
     # Soil thermal properties
+    if aSoi is 'sentinel':
+        print("WARNING: No diffusivity value was provided, assuming a volumetric thermal capacity CSoi = ", 1200*1800,"J/(m3K)")
+        aSoi = kSoi/1800/1200
     #kSoi = 1.8 				# Ground thermal conductivity (W/(mK))
     #cSoi = 1200				# Specific heat capacity of the soil (J/(kgK))
     #dSoi = 1800				# Density of the soil (kg/m3)
-    #CSoi = 1200*1800
+    CSoi = kSoi/aSoi            # Volumetric thermal capacity of the soil (J/(m3K))
     #aSoi = kSoi/cSoi/dSoi   # Ground thermal diffusivity (m2/s)
     #Tg = 10                 # Undisturbed ground temperature (degC)
 
