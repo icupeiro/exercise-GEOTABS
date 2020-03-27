@@ -92,7 +92,7 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
 
     print("IMPORTANT: Heat injected to the ground is (+)")
     print("IMPORTANT: Heat extracted from the ground is (-)")
-    print("-------- Introduced arguments ---------")
+    print("\n-------- Introduced arguments ---------")
     print("Thermal conductivity of the ground kSoi = ", kSoi,"W/(mK)")
     print("Thermal diffusivity of the ground aSoi = ", aSoi, "m2/s")
     print("Undisturbed ground temperature Tg = ", Tg, "degC")
@@ -104,7 +104,7 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
     # -------------------------------------------------------------------------
     # Borehole fields
     # -------------------------------------------------------------------------
-    print("Calculations for one borehole in progress...")
+    print("\nCalculations for one borehole in progress...")
     #Calculation of the thermal response of a 100m borehole
     boreHole = gt.boreholes.Borehole(H, D, r_b, 0, 0)
     gFunc = gt.gfunction.uniform_temperature([boreHole], time, aSoi, nSegments=nSegments, disp=True)
@@ -135,7 +135,7 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
     while abs((L-L_old)/L*100.) > 1:
         #Iteration number
         i+=1
-        print("Iteration number: ", i)
+        print("\n +++ Iteration number: ", i, "+++")
         # Redefinition of time vector
         time = gt.utilities.time_geometric(dt, tmax, nt)
         # Redefinition of the borefield g-function
@@ -161,7 +161,7 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
         print("Convergence criterion: ", abs((L-L_old)/L*100.), "%")
 
 
-    print("########## ITERATION PROCESS FINISHED ##########")
+    print("\n########## ITERATION PROCESS FINISHED ##########")
     #print("The final length of the field is", L, "m")
     #print("The final length per borehole is", L/N_1/N_2, "m")
     print("Final 6h peak resistance: ", Rh, "(mK)/W")
@@ -171,8 +171,6 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
     # -------------------------------------------------------------------------
     # Figure
     # -------------------------------------------------------------------------
-
-def plotField():
 
     gt.boreholes.visualize_field(boreField)
 
