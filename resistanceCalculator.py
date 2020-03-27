@@ -78,7 +78,7 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
     #Tc = 18                 # Check whether it is for cooling or heating! (degC)
 
     # Number of segments per borehole
-    nSegments = 12
+    nSegments = 1
 
     # Geometrically expanding time vector. 
 
@@ -96,7 +96,7 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
     print("Thermal conductivity of the ground kSoi = ", kSoi,"W/(mK)")
     print("Thermal diffusivity of the ground aSoi = ", aSoi, "m2/s")
     print("Undisturbed ground temperature Tg = ", Tg, "degC")
-    print("Temperature constraint Tc = ", Tc, "degC")
+    print("Fluid temperature constraint Tc = ", Tc, "degC")
     print("Borehole effective resistance Rb =", Rb,"(mK)/W")
     print("Volumetric thermal capacity of the ground CSoi =", CSoi, "J/(m3.K)")
 
@@ -161,7 +161,7 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
         print("Convergence criterion: ", abs((L-L_old)/L*100.), "%")
 
 
-
+    print("########## ITERATION PROCESS FINISHED ##########")
     #print("The final length of the field is", L, "m")
     #print("The final length per borehole is", L/N_1/N_2, "m")
     print("Final 6h peak resistance: ", Rh, "(mK)/W")
@@ -171,6 +171,8 @@ def computeResistances(qh,qm,qa,kSoi=1.8, aSoi='sentinel' ,Rb=0.144,Tg=10,Tc=18)
     # -------------------------------------------------------------------------
     # Figure
     # -------------------------------------------------------------------------
+
+def plotField():
 
     gt.boreholes.visualize_field(boreField)
 
