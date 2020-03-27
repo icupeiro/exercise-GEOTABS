@@ -31,4 +31,4 @@ RUN pip install --user pygfunction
 
 COPY PartIII_EnergySystemDesign.ipynb $HOME
 COPY resistanceCalculator.py $HOME
-COPY fig $HOME
+COPY fig $HOME/fig
