@@ -32,4 +32,4 @@ RUN pip install --user pygfunction
 
 COPY JModelica_test.ipynb $HOME
 COPY resistanceCalculator.py $HOME
-COPY fig/ $HOME
+COPY fig $HOME
