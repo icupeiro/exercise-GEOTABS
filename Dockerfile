@@ -19,12 +19,16 @@ WORKDIR $HOME
 
 USER developer
 
-RUN git clone https://github.com/open-ideas/IDEAS.git $HOME/IDEAS
-RUN git clone https://github.com/icupeiro/model-GEOTABS.git
 RUN pip install --user --no-cache-dir notebook==5.*
+RUN pip install --user future
 RUN pip install --user pandas
+RUN pip install --user scipy
+RUN pip install --user numpy
+RUN pip install --user matplotlib
 RUN pip install --user flask
 RUN pip install --user ipykernel==4.7.0
 RUN pip install --user pygfunction
 
+
 COPY JModelica_test.ipynb $HOME
+COPY resistance_calculator.py
