@@ -37,3 +37,4 @@ COPY PartV_hybridGEOTABS.ipynb $HOME
 COPY loadCalc.xlsx $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
+COPY results $HOME/results
