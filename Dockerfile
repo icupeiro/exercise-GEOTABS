@@ -6,7 +6,7 @@ USER root
 RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid 1000 \
-    developer
+    aux
 
 ENV ROOT_DIR /usr/local
 ENV JMODELICA_HOME $ROOT_DIR/JModelica
@@ -46,5 +46,7 @@ COPY loadCalc.xlsx $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
 COPY results $HOME/results
+
+USER aux 
 
 CMD cd /home/user; jupyter notebook --ip=0.0.0.0 --NotebookApp.token=''
