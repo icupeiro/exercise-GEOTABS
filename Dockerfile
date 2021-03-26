@@ -1,6 +1,5 @@
 FROM michaelwetter/ubuntu-1604_jmodelica_trunk:latest
 
-RUN pip install --user --no-cache --upgrade pip && \
 RUN pip install --user --no-cache notebook
 
 ENV ROOT_DIR /usr/local
@@ -29,8 +28,6 @@ USER ${USER}
 
 RUN apt-get update && \
 	apt-get install -y git
-
-
 
 RUN pip install --user future
 RUN pip install --user pandas
