@@ -19,7 +19,6 @@ WORKDIR $HOME
 
 USER developer
 
-RUN pip install --upgrade pip
 RUN pip install --user --no-cache-dir notebook==5.*
 RUN pip install --user future
 RUN pip install --user pandas
