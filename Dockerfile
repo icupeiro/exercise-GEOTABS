@@ -17,6 +17,7 @@ RUN apt-get update && \
 ENV HOME /home/developer
 WORKDIR $HOME
 
+RUN chown -R 1000 developer
 USER developer
 
 RUN pip install --user --no-cache-dir notebook==5.*
@@ -38,7 +39,3 @@ COPY loadCalc.xlsx $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
 COPY results $HOME/results
-
-USER root
-RUN chown -R 1000 ${HOME}
-USER developer
