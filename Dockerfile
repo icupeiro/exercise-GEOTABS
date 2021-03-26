@@ -1,6 +1,4 @@
-FROM michaelwetter/ubuntu-1604_jmodelica_trunk:latest
-
-RUN pip install --user --no-cache notebook
+FROM michaelwetter/ubuntu-1604_jmodelica_trunk
 
 ENV ROOT_DIR /usr/local
 ENV JMODELICA_HOME $ROOT_DIR/JModelica
@@ -13,22 +11,15 @@ ENV PATH="/home/developer/.local/bin:${PATH}"
 
 USER root
 
-ARG NB_USER
-ARG NB_UID
-ENV USER ${NB_USER}
-ENV HOME /home/${NB_USER}
-
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
-WORKDIR $HOME
-USER ${USER}
-
 RUN apt-get update && \
 	apt-get install -y git
+ 
+ENV HOME /home/developer
+WORKDIR $HOME
 
+USER developer
+
+RUN pip install --user --no-cache-dir notebook==5.*
 RUN pip install --user future
 RUN pip install --user pandas
 RUN pip install --user scipy
