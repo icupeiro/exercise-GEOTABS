@@ -13,7 +13,6 @@ USER root
 
 ARG NB_USER
 ARG NB_UID
-ENV USER ${NB_USER}
 
 RUN apt-get update && \
 	apt-get install -y git
@@ -25,14 +24,14 @@ RUN chown -R 1000 /home/developer
 
 USER developer
 
-RUN pip install --no-cache-dir notebook==5.*
-RUN pip install future
-RUN pip install pandas
-RUN pip install scipy
-RUN pip install numpy
-RUN pip install matplotlib
-RUN pip install ipykernel==4.7.0
-RUN pip install pygfunction
+RUN pip install --user --no-cache-dir notebook==5.*
+RUN pip install --user future
+RUN pip install --user pandas
+RUN pip install --user scipy
+RUN pip install --user numpy
+RUN pip install --user matplotlib
+RUN pip install --user ipykernel==4.7.0
+RUN pip install --user pygfunction
 
 COPY Introduction.ipynb $HOME
 COPY PartI_TABS.ipynb $HOME
