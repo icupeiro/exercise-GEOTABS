@@ -1,4 +1,4 @@
-FROM michaelwetter/ubuntu-1604_jmodelica_trunk
+FROM michaelwetter/ubuntu-1604_jmodelica_trunk:de4cc9dd5065
 
 ENV ROOT_DIR /usr/local
 ENV JMODELICA_HOME $ROOT_DIR/JModelica
@@ -9,15 +9,26 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV PYTHONPATH $PYTHONPATH:$JMODELICA_HOME/Python:$JMODELICA_HOME/Python/pymodelica
 ENV PATH="/home/developer/.local/bin:${PATH}"
 
+ARG NB_USER=developer
+ARG NB_UID=1000
+ENV USER ${NB_USER}
+ENV NB_UID ${NB_UID}
+ENV HOME /home/${NB_USER}
+
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+
 USER root
 
 RUN apt-get update && \
 	apt-get install -y git
- 
-ENV HOME /home/developer
-WORKDIR $HOME
 
-USER developer
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
+ 
+WORKDIR $HOME
 
 RUN pip install --user --no-cache-dir notebook==5.*
 RUN pip install --user future
