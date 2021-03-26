@@ -9,6 +9,8 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV PYTHONPATH $PYTHONPATH:$JMODELICA_HOME/Python:$JMODELICA_HOME/Python/pymodelica
 ENV PATH="/home/developer/.local/bin:${PATH}"
 
+USER root
+
 ARG NB_USER
 ARG NB_UID
 ENV USER ${NB_USER}
