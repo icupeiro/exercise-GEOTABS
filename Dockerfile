@@ -14,21 +14,11 @@ USER root
 RUN apt-get update && \
 	apt-get install -y git
 
- 
 ENV HOME /home/developer
+ENV NB_UID 1000
 WORKDIR $HOME
 
-ARG NB_USER=jovyan
-ARG NB_UID=1000
-ENV USER ${NB_USER}
-ENV NB_UID ${NB_UID}
-ENV HOME /home/${NB_USER}
-
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
+RUN chown -R $NB_UID $HOME
 USER developer
 
 RUN pip install --user --no-cache-dir notebook==5.*
