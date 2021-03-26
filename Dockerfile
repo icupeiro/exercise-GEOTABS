@@ -5,7 +5,7 @@ USER root
 # create user with a home directory
 RUN adduser --disabled-password \
     --gecos "Default user" \
-    --uid 1000 \
+    --uid 1001 \
     aux
 
 ENV ROOT_DIR /usr/local
@@ -24,6 +24,9 @@ RUN apt-get update && \
  
 ENV HOME /home/developer
 WORKDIR $HOME
+
+RUN chown -R 1000 /home/developer
+RUN chown -R 1000 /home/aux
 
 USER developer
 
