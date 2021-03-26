@@ -1,5 +1,8 @@
 FROM michaelwetter/ubuntu-1604_jmodelica_trunk:latest
 
+RUN pip install --user --no-cache --upgrade pip && \
+RUN pip install --user --no-cache notebook
+
 ENV ROOT_DIR /usr/local
 ENV JMODELICA_HOME $ROOT_DIR/JModelica
 ENV IPOPT_HOME $ROOT_DIR/Ipopt-3.12.4
@@ -27,7 +30,7 @@ USER ${USER}
 RUN apt-get update && \
 	apt-get install -y git
 
-RUN pip install --user --no-cache-dir notebook
+
 
 RUN pip install --user future
 RUN pip install --user pandas
