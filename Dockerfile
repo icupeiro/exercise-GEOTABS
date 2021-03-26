@@ -20,7 +20,7 @@ ENV HOME /home/${NB_USER}
 RUN apt-get update && \
 	apt-get install -y git
 
-RUN chown -R ${NB_UID} ${HOME}
+RUN chown -R ${NB_UID} 'home/developer'
 USER ${NB_USER}
  
 WORKDIR $HOME
