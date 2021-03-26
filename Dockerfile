@@ -1,4 +1,4 @@
-FROM michaelwetter/ubuntu-1604_jmodelica_trunk:de4cc9dd506555996bdee7607a6fa7a395c87d238f21606a1f6bcf10db1d211b
+FROM michaelwetter/ubuntu-1604_jmodelica_trunk:latest
 
 ENV ROOT_DIR /usr/local
 ENV JMODELICA_HOME $ROOT_DIR/JModelica
