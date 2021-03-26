@@ -17,6 +17,3 @@ RUN apt-get update && \
 ENV HOME /home/developer
 WORKDIR $HOME
 
-USER developer
-
-COPY PartV_hybridGEOTABS.ipynb $HOME
