@@ -11,19 +11,13 @@ ENV PATH="/home/developer/.local/bin:${PATH}"
 
 USER root
 
-ARG NB_USER=developer
-ARG NB_UID=1000
-ENV USER ${NB_USER}
-ENV NB_UID ${NB_UID}
-ENV HOME /home/${NB_USER}
-
 RUN apt-get update && \
 	apt-get install -y git
-
-RUN chown -R ${NB_UID} 'home/developer'
-USER ${NB_USER}
  
+ENV HOME /home/developer
 WORKDIR $HOME
+
+USER developer
 
 RUN pip install --user --no-cache-dir notebook==5.*
 RUN pip install --user future
@@ -44,3 +38,7 @@ COPY loadCalc.xlsx $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
 COPY results $HOME/results
+
+USER root
+RUN chown -R 1000 $HOME
+USER developer
