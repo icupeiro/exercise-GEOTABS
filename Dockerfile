@@ -9,6 +9,8 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV PYTHONPATH $PYTHONPATH:$JMODELICA_HOME/Python:$JMODELICA_HOME/Python/pymodelica
 ENV PATH="/home/developer/.local/bin:${PATH}"
 
+USER root
+
 ARG NB_USER=developer
 ARG NB_UID=1000
 ENV USER ${NB_USER}
@@ -19,8 +21,6 @@ RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
-
-USER root
 
 RUN apt-get update && \
 	apt-get install -y git
