@@ -1,5 +1,13 @@
 FROM michaelwetter/ubuntu-1604_jmodelica_trunk
 
+USER root
+
+# create user with a home directory
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid 1000 \
+    developer
+
 ENV ROOT_DIR /usr/local
 ENV JMODELICA_HOME $ROOT_DIR/JModelica
 ENV IPOPT_HOME $ROOT_DIR/Ipopt-3.12.4
@@ -38,3 +46,5 @@ COPY loadCalc.xlsx $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
 COPY results $HOME/results
+
+CMD cd /home/user; jupyter notebook --ip=0.0.0.0 --NotebookApp.token=''
