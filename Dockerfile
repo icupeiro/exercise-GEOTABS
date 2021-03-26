@@ -9,11 +9,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV PYTHONPATH $PYTHONPATH:$JMODELICA_HOME/Python:$JMODELICA_HOME/Python/pymodelica
 ENV PATH="/home/developer/.local/bin:${PATH}"
 
-RUN apt-get update && \
-	apt-get install -y git
-
-RUN pip install --user --no-cache-dir notebook
-
 ARG NB_USER
 ARG NB_UID
 ENV USER ${NB_USER}
@@ -26,6 +21,11 @@ RUN adduser --disabled-password \
 
 WORKDIR $HOME
 USER ${USER}
+
+RUN apt-get update && \
+	apt-get install -y git
+
+RUN pip install --user --no-cache-dir notebook
 
 RUN pip install --user future
 RUN pip install --user pandas
