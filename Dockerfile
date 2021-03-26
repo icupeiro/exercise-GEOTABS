@@ -27,6 +27,8 @@ RUN pip install --user numpy
 RUN pip install --user matplotlib
 RUN pip install --user ipykernel==4.7.0
 RUN pip install --user pygfunction
+RUN pip install --user pyfmi
+RUN pip install --user pymodelica
 
 COPY Introduction.ipynb $HOME
 COPY PartI_TABS.ipynb $HOME
@@ -35,6 +37,7 @@ COPY PartIII_EnergySystemDesign.ipynb $HOME
 COPY PartIV_DynamicSim.ipynb $HOME
 COPY PartV_hybridGEOTABS.ipynb $HOME
 COPY loadCalc.xlsx $HOME
+COPY loadCalcSol.xlsx $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
 COPY results $HOME/results
