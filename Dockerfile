@@ -27,7 +27,6 @@ RUN pip install --user numpy
 RUN pip install --user matplotlib
 RUN pip install --user ipykernel==4.7.0
 RUN pip install --user pygfunction
-RUN pip install --user pyfmi
 RUN pip install --user pymodelica
 
 COPY Introduction.ipynb $HOME
