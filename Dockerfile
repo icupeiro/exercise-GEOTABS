@@ -11,6 +11,10 @@ ENV PATH="/home/developer/.local/bin:${PATH}"
 
 USER root
 
+ARG NB_USER
+ARG NB_UID
+ENV USER ${NB_USER}
+
 RUN apt-get update && \
 	apt-get install -y git
  
@@ -40,5 +44,3 @@ COPY loadCalc.xlsx $HOME
 COPY resistanceCalculator.py $HOME
 COPY fig $HOME/fig
 COPY results $HOME/results
-
-CMD cd /home/developer; jupyter notebook --ip=0.0.0.0 --NotebookApp.token=''
