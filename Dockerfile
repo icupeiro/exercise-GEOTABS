@@ -19,13 +19,4 @@ WORKDIR $HOME
 
 USER developer
 
-RUN pip install --user --no-cache-dir notebook==5.*
-RUN pip install --user future
-RUN pip install --user pandas
-RUN pip install --user scipy
-RUN pip install --user numpy
-RUN pip install --user matplotlib
-RUN pip install --user ipykernel==4.7.0
-RUN pip install --user pygfunction
-
 COPY PartV_hybridGEOTABS.ipynb $HOME
