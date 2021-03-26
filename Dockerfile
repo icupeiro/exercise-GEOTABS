@@ -40,5 +40,5 @@ COPY fig $HOME/fig
 COPY results $HOME/results
 
 USER root
-RUN chown -R 1000 $HOME
+RUN chown -R 1000 ${HOME}
 USER developer
